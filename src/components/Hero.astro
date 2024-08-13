@@ -1,16 +1,16 @@
----
+<!-- ---
 import Button from "./Button.astro"
 ---
 
 <section class="hero bg-white text-black my-16">
-  <div class="hero-content flex items-center justify-between">
+  <div class="hero-content flex items-center">
     <div class="text-content max-w-lg mr-8">
       <h1 class="text-6xl font-bold mb-4 text-left">Creating Seamless Digital Journeys</h1>
       <p class="text-xl mb-8 text-gray-500">Hello, I’m Diana Vidal, an enthusiastic fullstack developer from Barcelona. 
         My goal is to build websites and applications that are both aesthetically pleasing and incredibly user-friendly.
       </p>
     </div>
-    <img src="diana.png" alt="Foto Diana" class="profile-pic w-[350px] h-[230px]">
+    <img src="diana.png" alt="Foto Diana" class="profile-pic w-[230px] h-[230px]">
   </div>
   <Button />
 </section>
@@ -20,5 +20,44 @@ import Button from "./Button.astro"
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 1rem;
+  }
+
+</style>
+ -->
+
+---
+import Button from "./Button.astro"
+---
+
+<section class="hero bg-white text-black my-16 flex justify-center">
+  <div class="hero-content flex items-center justify-between w-full max-w-5xl px-4">
+    <div class="text-content max-w-lg mr-8">
+      <h1 class="text-6xl font-bold mb-4 text-left">Creating Seamless Digital Journeys</h1>
+      <p class="text-xl mb-8 text-gray-500">Hello, I’m Diana Vidal, an enthusiastic fullstack developer from Barcelona. 
+        My goal is to build websites and applications that are both aesthetically pleasing and incredibly user-friendly.
+      </p>
+      <Button />
+    </div>
+    <img src="diana.png" alt="Foto Diana" class="profile-pic w-[230px] h-[230px]">
+  </div>
+</section>
+
+<style>
+  .profile-pic {
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+
+  .hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; 
+  }
+
+  .text-content Button {
+    margin-top: 1rem;
   }
 </style>
