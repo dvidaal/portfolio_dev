@@ -1,25 +1,155 @@
-<section class="projects-section">
-  <div class="flex flex-col items-center">
+---
+
+const projects = [
+  {
+    title: "Project 1: Slot Machine Game Project",
+    description: "Designed and developed a modern and responsive slot machine game where users can spin to match figure combinations, win prizes, and accumulate a jackpot. Built with React, the game offers an engaging experience with every spin, including special features like a growing jackpot and the thrill of hitting the jackpot with a lucky combination.",
+    link: "https://slotmachine-d01-diana-vidal.netlify.app/",
+    image: "/slotmachine.png"
+  },
+  {
+    title: "Project 2: OpenBoards App",
+    description: "Designed and developed a web application that enables users to create and join board game sessions. Users can choose their game, upload a cover image, and provide session details like available spots, player descriptions, and the date and time. The app also includes features for managing sessions, such as creating, joining, and deleting sessions.",
+    link: "https://diana-vidal-final-project-202301-bcn.netlify.app/login",
+    image: "/openboards.png"
+  },
+  {
+    title: "Project 3: Github Glorified List",
+    description: "Enter a GitHub username, explore their repositories, and effortlessly filter by name with GitHub Glorified List. This project was created as part of a technical challenge, demonstrating the ability to interact with the GitHub API, parse JSON data, and display it in a user-friendly interface. The application allows users to search for specific repositories by name and provides a clear and organized list view of all repositories associated with a GitHub account.",
+    link: "https://mvst-github-challenge-diana-vidal.netlify.app/",
+    image: "Glorified_Dan.png",
+    image2: "Glorified_Repos_Dan.png"
+  },
+  {
+    title: "Project 4: Tic Tac Toe",
+    description: "Designed and developed a responsive version of the classic Tic Tac Toe game using modern web development technologies. The game features a simple and intuitive interface, allowing players to enjoy the game on any device. To enhance user engagement, a confetti animation is triggered upon winning. The project demonstrates a deep understanding of state management, event handling, and responsive design principles.",
+    link: "https://tic-tac-toe-diana-vidal.netlify.app/",
+    image: "TicTacToe.png"
+  },
+  {
+    title: "Project 5: Fake Twitter Card",
+    description: "This project involves creating interactive Twitter-style profile cards that allow users to simulate following and unfollowing profiles. It showcases skills in DOM manipulation, event handling, and basic state management in JavaScript. The project is a playful exercise in UI design, focusing on creating an authentic and responsive user experience that mimics social media interactions.",
+    link: "https://fake-twitter-card-diana-vidal.netlify.app/",
+    image: "Fake_Twitter_Card.png"
+  },
+  {
+    title: "Project 6: Esed Fake Login",
+    description: "Developed as part of a technical test, this project features a fake login page for a company, requiring the implementation of various filters and validation checks. The challenge was to create a secure and intuitive login form, applying techniques such as input validation, error handling, and responsive design. The project highlights the importance of user experience in form design and demonstrates the ability to integrate front-end logic with user authentication processes.",
+    link: "https://esed-coding.netlify.app/",
+    image: "esed_login.png"
+  }
+];
+---
+<section class="projects-section bg-white text-black my-16 flex justify-center">
+  <div class="projects-content flex flex-col items-center w-full max-w-5xl px-4">
     <p class="text-black text-sm m-4">Featured Work</p>
     <h2 class="text-black">Showcasing My Craft</h2>
-    <h3 class="text-gray-400">Take a look at some of my recent projects and the design process behind them.</h3>
-  </div>
+    <h3 class="text-gray-400 text-center mb-8">Take a look at some of my recent projects and the design process behind them.</h3>
 
-  <div class="project-one">
-    <span>Project 1: Acme Inc. Website</span>
+    <div>
+      {projects.map((project, index) => (
+        <div class={`project text-black mb-8 flex items-start ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+          <div class="project-text mr-8">
+            <h4 class="text-2xl font-semibold mt-4">{project.title}</h4>
+            <p class="text-gray-400 mt-2 mb-4 text-lg">{project.description}</p>
+            <a href={project.link} class="view-portfolio-button rounded-lg">View Project</a>
+          </div>
+          <div class="image-placeholder">
+            {project.image2 ? (
+              <div class="multiple-images">
+                <img src={project.image} alt={`${project.title} Image 1`} class="w-auto h-auto rounded-md project-image" />
+                <img src={project.image2} alt={`${project.title} Image 2`} class="w-auto h-auto rounded-md project-image" />
+              </div>
+            ) : (
+              <img src={project.image} alt={project.title} class="w-auto h-auto rounded-md project-image" />
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
 
 <style>
-  .projects-section{
+  .projects-section {
     background-color: #f4f4f5;
   }
 
-  h2 {
-		font-size: 3rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 0.5rem;
-	}
+  .projects-content h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .projects-content h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .view-portfolio-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .view-portfolio-button:hover {
+    background-color: #333;
+  }
+
+  .project {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .project-text {
+    flex: 1;
+  }
+
+  .project img {
+    max-width: 250px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .image-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    overflow: hidden; 
+    border-radius: 8px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .image-placeholder:hover {
+  transform: scale(1.05);
+  box-shadow: rgb(0, 0, 0) 0px 25px 35px -10px; 
+}
+
+  .project.flex-row .project-text {
+    margin-right: 20px;
+    margin-left: 0;
+  }
+
+  .project.flex-row-reverse .project-text {
+    margin-left: 20px;
+    margin-right: 0;
+  }
+
+  .multiple-images {
+    display: flex;
+    gap: 8px; 
+  }
+
+  .multiple-images img {
+    max-width: 120px; 
+    height: auto;
+  }
 </style>
