@@ -1,0 +1,89 @@
+---
+const skills = [
+  {
+    title: "UI/UX Design",
+    description: "Crafting intuitive and visually appealing user interfaces."
+  },
+  {
+    title: "Front-end Development",
+    description: "Transforming designs into responsive and interactive websites and applications."
+  },
+  {
+    title: "Back-end Development",
+    description: "Building robust and scalable server-side applications, ensuring seamless data management and efficient communication between the server and client."
+  },
+  {
+    title: "Motion Design",
+    description: "Bringing designs to life with engaging animations and interactions."
+  },
+  {
+    title: "Product Strategy",
+    description: "Defining product requirements and roadmaps to achieve business goals."
+  },
+  {
+    title: "Project Management",
+    description: "Coordinating and delivering projects on time and within budget."
+  },
+
+]
+---
+
+
+<div class="skills flex justify-center items-center flex-col px-4 md:px-8">
+  <p class="skills-tag text-black text-sm m-4 w-20 h-9 flex justify-center items-center">My Skills</p>
+  <h2 class="text-black text-2xl">Expertise at Your Service</h2>
+  <h3 class="text-gray-500 text-center mb-8">I specialize in a wide range of design and development disciplines to bring your ideas to life.</h3>
+  
+  <div class="skills-list grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
+    {skills.map((skill, index) => (
+      <div class="skill-item p-4">
+        <span class="skills-title-list text-2xl font-semibold">{skill.title}</span>
+        <p class="text-gray-400 mt-2">{skill.description}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+
+
+<style>
+
+
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); 
+  gap: 5px;
+}
+
+@media (min-width: 768px) {
+  .skills-list {
+    grid-template-columns: repeat(3, 1fr); 
+}
+}
+
+.skills-title-list {
+  color: black;
+}
+
+.skill-item {
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.skills-tag{
+  background-color: #f4f4f5;
+  border-radius: 20%;
+}
+
+
+.skills h2 {
+  color: #000;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+
+
+</style>
