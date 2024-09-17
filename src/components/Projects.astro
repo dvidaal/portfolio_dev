@@ -50,9 +50,11 @@ const projects = [
       {projects.map((project, index) => (
         <div class={`project text-black mb-8 flex items-start ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
           <div class="project-text mr-8">
-            <h4 class="text-2xl font-semibold mt-4">{project.title}</h4>
-            <p class="text-gray-400 mt-2 mb-4 text-lg">{project.description}</p>
-            <a href={project.link} class="view-portfolio-button rounded-lg">View Project</a>
+            <h4 class="text-2xl font-semibold  ml-4">{project.title}</h4>
+            <p class="text-gray-400 mb-4 ml-4 text-lg">{project.description}</p>
+           <a href={project.link} class="view-portfolio-button rounded-lg ml-4">View Project</a>
+           {/* <a href={project.link} class="view-portfolio-button rounded-lg block mx-auto md:inline-block px-4 py-2 text-center text-sm md:text-base w-auto">View Project</a> */}
+
           </div>
           <div class="image-placeholder">
             {project.image2 ? (
@@ -70,86 +72,119 @@ const projects = [
   </div>
 </section>
 
+
 <style>
-  .projects-section {
-    background-color: #f4f4f5;
+
+.projects-section {
+  background-color: #f4f4f5;
+  padding: 2rem 1rem;
+}
+
+.projects-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.projects-content h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+}
+
+.view-portfolio-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-portfolio-button:hover {
+  background-color: #333;
+}
+
+.project {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.project-text {
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.project img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.image-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 250px;
+}
+
+.image-placeholder:hover {
+  transform: scale(1.05);
+  box-shadow: rgb(0, 0, 0) 0px 25px 35px -10px;
+}
+
+.multiple-images {
+  display: flex;
+  gap: 8px;
+}
+
+.multiple-images img {
+  max-width: 120px;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .project {
+    flex-direction: column; 
+  }
+
+  .project.flex-row-reverse {
+    flex-direction: column; 
   }
 
   .projects-content h2 {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    margin-bottom: 0.5rem;
+    font-size: 2rem;
   }
 
   .projects-content h3 {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-
-  .view-portfolio-button {
-    padding: 0.75rem 1.5rem;
     font-size: 1rem;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .view-portfolio-button:hover {
-    background-color: #333;
-  }
-
-  .project {
-    display: flex;
-    align-items: flex-start;
-  }
-
-  .project-text {
-    flex: 1;
   }
 
   .project img {
-    max-width: 250px;
+    max-width: 100%;
     height: auto;
-    object-fit: cover;
-    border-radius: 8px;
   }
 
   .image-placeholder {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    overflow: hidden; 
-    border-radius: 8px; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .image-placeholder:hover {
-  transform: scale(1.05);
-  box-shadow: rgb(0, 0, 0) 0px 25px 35px -10px; 
-}
-
-  .project.flex-row .project-text {
-    margin-right: 20px;
-    margin-left: 0;
-  }
-
-  .project.flex-row-reverse .project-text {
-    margin-left: 20px;
-    margin-right: 0;
+    max-width: 100%; 
   }
 
   .multiple-images {
-    display: flex;
-    gap: 8px; 
+    justify-content: center; 
   }
 
   .multiple-images img {
-    max-width: 120px; 
-    height: auto;
+    max-width: 100px; 
   }
+}
+
 </style>
