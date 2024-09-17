@@ -1,0 +1,67 @@
+<div class="contact flex justify-center items-center flex-col px-4 md:px-8">
+  <p
+    class="contact-tag text-black text-sm m-4 flex justify-center items-center"
+  >
+    Get in Touch
+  </p>
+  <h2 class="text-black text-3xl font-bold text-center">Let's Collaborate</h2>
+  <h3 class="text-gray-500 text-center mb-8">
+    I'm always eager to discuss new projects and opportunities. Feel free to
+    reach out, and let's bring your ideas to life.
+  </h3>
+
+  <form class="w-full max-w-md">
+    <div class="mb-4">
+      <input
+        class="w-full p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+        type="text"
+        placeholder="Name"
+        required
+      />
+    </div>
+    <div class="mb-4">
+      <input
+        class="w-full p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+        type="email"
+        placeholder="Email"
+        required
+      />
+    </div>
+    <div class="mb-4">
+      <textarea
+        class="w-full p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+        rows="5"
+        placeholder="Message"
+        required></textarea>
+    </div>
+    <div class="flex justify-center">
+      <button
+        class="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition duration-300 mb-20"
+        type="submit">Send Message</button
+      >
+    </div>
+  </form>
+</div>
+
+<style>
+  .contact h2 {
+    color: #000;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 1rem; 
+  color: gray; 
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  font-size: 1rem; 
+  color: lightgray; 
+}
+
+</style>
