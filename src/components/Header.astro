@@ -1,10 +1,94 @@
-<header class="flex justify-between text-black">
-  <img src="didi_dev_pixel.webp" alt="Avatar Diana" class="w-10 h-10 rounded-full">
-    <nav>
-      <a href="/" class="m-2">Home</a>
-      <a href="#projects" class="m-2">Projects</a>
-      <a href="#skills" class="m-2">Skills</a>
-      <a href="#contact" class="m-2">Contact</a>
+<header class="sticky top-0 z-10 flex justify-between items-center text-black py-4 px-6 md:px-8 bg-white shadow-md">
+    <img src="didi_dev_pixel.webp" alt="Avatar Diana" class="w-10 h-10 rounded-full">
+    
+    <nav id="nav-menu" class="hidden md:flex md:items-center">
+        <a href="/" class="m-2 text-sm md:text-base hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Home</a>
+        <a href="#projects" class="m-2 text-sm md:text-base hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Projects</a>
+        <a href="#skills" class="m-2 text-sm md:text-base hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Skills</a>
+        <a href="#contact" class="m-2 text-sm md:text-base hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Contact</a>
     </nav>
-
+    
+    <div class="flex items-center">
+        <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors">
+            <img id="sun-icon" src="sun.png" alt="Sun Icon" class="w-5 h-5" />
+            <img id="moon-icon" src="dark.png" alt="Moon Icon" class="w-5 h-5 hidden" />
+        </button>
+        <button id="menu-toggle" class="md:hidden p-2 ml-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </div>
 </header>
+
+<nav id="mobile-nav-menu" class="md:hidden flex-col items-center bg-white w-full text-center py-4 hidden">
+    <a href="/" class="m-2 text-sm hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Home</a>
+    <a href="#projects" class="m-2 text-sm hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Projects</a>
+    <a href="#skills" class="m-2 text-sm hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Skills</a>
+    <a href="#contact" class="m-2 text-sm hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Contact</a>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleButton = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileNavMenu = document.getElementById('mobile-nav-menu');
+
+        // Cambiar los íconos de sol/luna para dark mode
+        function toggleIcons() {
+            if (document.documentElement.classList.contains('dark')) {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        }
+
+        toggleButton.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            toggleIcons();
+        });
+
+        // Mostrar/ocultar el menú de navegación móvil
+        menuToggle.addEventListener('click', () => {
+            mobileNavMenu.classList.toggle('active');
+            mobileNavMenu.classList.toggle('hidden'); // Mostrar/ocultar menú
+        });
+
+        // Cerrar el menú al hacer scroll
+        window.addEventListener('scroll', () => {
+            if (mobileNavMenu.classList.contains('active')) {
+                mobileNavMenu.classList.remove('active');
+                mobileNavMenu.classList.add('hidden');
+            }
+        });
+
+        toggleIcons(); // Asegurar el ícono correcto se muestra desde el inicio
+    });
+</script>
+
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    #mobile-nav-menu {
+      display: none;
+    }
+    #mobile-nav-menu.active {
+      display: flex;
+      position: fixed; /* Mantén el menú visible incluso cuando haces scroll */
+      top: 60px; /* Ajusta según la altura de tu header */
+      left: 0;
+      width: 100%;
+      z-index: 10;
+    }
+  }
+</style>

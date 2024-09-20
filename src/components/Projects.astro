@@ -40,22 +40,20 @@ const projects = [
   }
 ];
 ---
-<section id="projects" class="projects-section bg-white text-black my-16 flex justify-center">
-  <div class="projects-content flex flex-col items-center w-full max-w-5xl px-4">
+<section id="projects" class="projects-section bg-white text-black flex justify-center">
+  <div class="projects-content flex flex-col items-center w-full max-w-screen-xl px-4">
     <p class="text-black text-sm m-4">Featured Work</p>
     <h2 class="text-black">Showcasing My Craft</h2>
     <h3 class="text-gray-500 text-center mb-8">Take a look at some of my recent projects and the design process behind them.</h3>
 
-    <div>
+    <div class="w-full">
       {projects.map((project, index) => (
         <div class={`project text-black mb-8 flex items-start ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
           <div class="project-text mr-8">
-            <h4 class="text-2xl font-semibold  ml-4">{project.title}</h4>
-            <p class="text-gray-400 mb-4 ml-4 text-lg">{project.description}</p>
-           <a href={project.link} target="_blank" rel="noopener noreferrer" class="view-portfolio-button rounded-lg ml-4">View Project</a>
-           {/* <a href={project.link} class="view-portfolio-button rounded-lg block mx-auto md:inline-block px-4 py-2 text-center text-sm md:text-base w-auto">View Project</a> */}
-
-          </div>
+  <h4 class="text-2xl font-semibold ml-4">{project.title}</h4>
+  <p class="mb-4 ml-4 text-lg">{project.description}</p>
+  <a href={project.link} target="_blank" rel="noopener noreferrer" class="view-portfolio-button rounded-lg ml-4">View Project</a>
+</div>
           <div class="image-placeholder">
             {project.image2 ? (
               <div class="multiple-images">
