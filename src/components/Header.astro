@@ -36,37 +36,36 @@
         const menuToggle = document.getElementById('menu-toggle');
         const mobileNavMenu = document.getElementById('mobile-nav-menu');
 
-        // Cambiar los íconos de sol/luna para dark mode
-        function toggleIcons() {
-            if (document.documentElement.classList.contains('dark')) {
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
-            } else {
-                sunIcon.classList.add('hidden');
-                moonIcon.classList.remove('hidden');
+        if (toggleButton && sunIcon && moonIcon) {
+            function toggleIcons() {
+                if (document.documentElement.classList.contains('dark')) {
+                    sunIcon!.classList.remove('hidden');
+                    moonIcon!.classList.add('hidden');
+                } else {
+                    sunIcon!.classList.add('hidden');
+                    moonIcon!.classList.remove('hidden');
+                }
             }
+
+            toggleButton.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                toggleIcons();
+            });
+
+            toggleIcons(); 
         }
 
-        toggleButton.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            toggleIcons();
-        });
+        if (menuToggle && mobileNavMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileNavMenu.classList.toggle('open');
+            });
 
-        // Mostrar/ocultar el menú de navegación móvil
-        menuToggle.addEventListener('click', () => {
-            mobileNavMenu.classList.toggle('active');
-            mobileNavMenu.classList.toggle('hidden'); // Mostrar/ocultar menú
-        });
-
-        // Cerrar el menú al hacer scroll
-        window.addEventListener('scroll', () => {
-            if (mobileNavMenu.classList.contains('active')) {
-                mobileNavMenu.classList.remove('active');
-                mobileNavMenu.classList.add('hidden');
-            }
-        });
-
-        toggleIcons(); // Asegurar el ícono correcto se muestra desde el inicio
+            window.addEventListener('scroll', () => {
+                if (mobileNavMenu.classList.contains('open')) {
+                    mobileNavMenu.classList.remove('open');
+                }
+            });
+        }
     });
 </script>
 
@@ -82,10 +81,10 @@
     #mobile-nav-menu {
       display: none;
     }
-    #mobile-nav-menu.active {
+    #mobile-nav-menu.open {
       display: flex;
-      position: fixed; /* Mantén el menú visible incluso cuando haces scroll */
-      top: 60px; /* Ajusta según la altura de tu header */
+      position: fixed;
+      top: 60px; 
       left: 0;
       width: 100%;
       z-index: 10;
