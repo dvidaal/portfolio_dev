@@ -1,2 +1,0 @@
-[entrypoints]
-web = { dir = "backend", cmd = "npm start" }

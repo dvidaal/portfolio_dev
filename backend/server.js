@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import dotenv from "dotenv";
 import emailRoutes from "./routes/emailRoutes.js";
 import errorHandler from "./middlewares/errorHandler.js";
@@ -7,6 +8,19 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
+
+const corsOptions = {
+  credentials: true,
+  origin: [
+    process.env.CORS_ALLOWED_ORIGIN,
+    process.env.CORS_ALLOWED_PRODUCTION,
+    process.env.CORS_ALLOWED_ORIGIN_2,
+    process.env.CORS_ALLOWED_ORIGIN_3,
+  ],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
 
 app.use("/send-email", emailRoutes);
 
