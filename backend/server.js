@@ -16,6 +16,8 @@ const corsOptions = {
     process.env.CORS_ALLOWED_PRODUCTION,
     process.env.CORS_ALLOWED_ORIGIN_2,
     process.env.CORS_ALLOWED_ORIGIN_3,
+    process.env.CORS_ALLOWED_ORIGIN_4,
+    process.env.CORS_ALLOWED_ORIGIN_5,
   ],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
