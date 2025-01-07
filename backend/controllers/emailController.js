@@ -4,10 +4,13 @@ export const sendMail = async (req, res) => {
   const { name, email, message } = req.body;
 
   const mailOptions = {
-    from: email,
+    from: `"${name}" <${process.env.EMAIL_USER}>`,
     to: process.env.EMAIL_USER,
     subject: `Solicitud ${name}`,
     text: message,
+    headers: {
+      "Reply-To": email,
+    },
   };
 
   try {
