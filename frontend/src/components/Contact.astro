@@ -75,12 +75,12 @@ import Socials from "./Socials.astro";
       !emailInput.value.trim() ||
       !messageElement.value.trim()
     ) {
-      displayMessage("Por favor, rellena todos los campos.", "error");
+      displayMessage("Please fill in all the fields", "error");
       return;
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(emailInput.value.match(emailRegex) === null) {
-      displayMessage("Por favor, introduce un email válido.", "error");
+      displayMessage("Please introduce a valid email.", "error");
       return;
     }
 
@@ -102,16 +102,16 @@ import Socials from "./Socials.astro";
       const data = await response.json();
 
       if (response.ok) {
-        displayMessage("Mensaje enviado correctamente", "success");
+        displayMessage("Message sent successfully", "success");
         nameInput.value = "";
         emailInput.value = "";
         messageElement.value = "";
       } else {
-        displayMessage(data.message || "Error al enviar el mensaje", "error");
+        displayMessage(data.message || "Error sending the message", "error");
       }
     } catch (error) {
       console.error("Error:", error);
-      displayMessage("Error al enviar el mensaje", "error");
+      displayMessage("Error sending the message", "error");
     }
   }
 
