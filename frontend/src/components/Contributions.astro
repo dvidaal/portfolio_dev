@@ -1,0 +1,159 @@
+---
+const contributions = [
+  {
+    title: "Contribution to Netflix Wrapped Project",
+    description:
+      "As part of this open-source initiative, I contributed by enhancing the styling and functionality of the image export feature, tailoring it to generate Instagram Story-sized images",
+    image: "/netflix_wrapped.png",
+    link: "https://github.com/socenpauriba/netflix-wrapped",
+  },
+  {
+    title: "Contribution to T-Mobilitat Wrapped Project",
+    description:
+      "Enhanced the image export feature for Instagram Stories, enabling users to share public transport stats from Barcelona in a visually appealing, platform-optimized format. Highlights front-end development and UI design expertise.",
+    image: "/tmobilitat-wrapped.png",
+    link: "https://github.com/socenpauriba/T-wrapped",
+  },
+];
+---
+
+<section
+  id="contributions"
+  class="contributions-section bg-white text-black flex justify-center"
+>
+  <div
+    class="contributions-content flex flex-col items-center w-full max-w-screen-xl px-4"
+  >
+    <p class="open-tag text-black text-sm m-4">Open Source Contributions</p>
+    <h2 class="text-black">Giving Back to the Community</h2>
+    <h3 class="text-gray-500 text-center mb-8">
+      Here are some open-source projects I have contributed to:
+    </h3>
+
+    <div class="w-full">
+      {
+        contributions.map((contribution, index) => (
+          <div
+            class={`contribution text-black mb-8 flex items-start ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
+          >
+            <div class="contribution-text mr-8">
+              <h4 class="text-2xl font-semibold ml-4">{contribution.title}</h4>
+              <p class="mb-4 ml-4 text-lg">{contribution.description}</p>
+              <a
+                href={contribution.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="view-portfolio-button rounded-lg ml-4"
+              >
+                View Code
+              </a>
+            </div>
+            <div class="image-placeholder">
+              <img
+                src={contribution.image}
+                alt={contribution.title}
+                class="w-auto h-auto rounded-md project-image"
+              />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+
+
+  .open-tag {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 10px;
+
+  }
+
+  .contributions-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+  .contributions-section {
+    background-color: #f4f4f5;
+    padding: 2rem 1rem;
+  }
+
+  .view-portfolio-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .view-portfolio-button:hover {
+    background-color: #333;
+  }
+
+  .image-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    overflow: hidden;
+    border-radius: 8px;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    max-width: 250px;
+  }
+
+  .image-placeholder:hover {
+    transform: scale(1.05);
+    box-shadow: rgb(0, 0, 0) 0px 25px 35px -10px;
+  }
+
+  .contribution-text {
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .contribution {
+      flex-direction: column;
+    }
+
+    .contribution.flex-row-reverse {
+      flex-direction: column;
+    }
+
+    .contributions-content h2 {
+      font-size: 2rem;
+    }
+
+    .contributions-content h3 {
+      font-size: 1rem;
+    }
+
+    .contribution img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .image-placeholder {
+      max-width: 100%;
+    }
+
+    .multiple-images {
+      justify-content: center;
+    }
+
+    .multiple-images img {
+      max-width: 100px;
+    }
+  }
+</style>
