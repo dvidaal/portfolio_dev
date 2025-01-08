@@ -1,184 +1,230 @@
 ---
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import Projects from '../components/Projects.astro';
-import Skills from '../components/Skills.astro';
+import Projects from "../components/Projects.astro";
+import Skills from "../components/Skills.astro";
+import Contributions from "@/components/Contributions.astro";
 
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
 ---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Portfolio Diana Vidal" />
-		<meta name="viewport" content="width=device-width" />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-		<link rel="icon" type="image/svg+xml" href="/didi_dev_pixel.webp" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<Header />
-	
-	<main>
-		<Hero />
-		<section class="projects-section">
-			<Projects />
-		</section>
-		<section class="skills-section">
-			<Skills />
-		</section>
-		<section class="contact-section">
-			<Contact />
-		</section>
-	</main>
-		<Footer />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Portfolio Diana Vidal" />
+    <meta name="viewport" content="width=device-width" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/didi_dev_pixel.webp" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+
+    <main>
+      <Hero />
+      <section class="projects-section">
+        <Projects />
+      </section>
+      <section class="contributions-section">
+        <Contributions />
+      </section>
+      <section class="skills-section">
+        <Skills />
+      </section>
+      <section class="contact-section">
+        <Contact />
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>
 
-
 <style is:global>
-	:root {
-		--background: 0 0% 100%;
-		--text-primary: 0 0% 0%;
-		--text-secondary: 0 0% 40%;
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	
-	html {
-		font-family: 'Inter', sans-serif;
-		background: hsl(var(--background));
-		color: hsl(var(--text-primary));
-	}
+  :root {
+    --background: 0 0% 100%;
+    --text-primary: 0 0% 0%;
+    --text-secondary: 0 0% 40%;
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
+  }
 
-	body {
-		margin: 0; 
-		padding: 0; 
-		font-size: 20px;
-		line-height: 1.6;
-		overflow-x: hidden;
-	}
+  html {
+    font-family: "Inter", sans-serif;
+    background: hsl(var(--background));
+    color: hsl(var(--text-primary));
+  }
 
-	h1, h2, h3, h4, h5, h6 {
-		color: hsl(var(--text-primary));
-	}
+  body {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 
-	p {
-		color: hsl(var(--text-secondary));
-	}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: hsl(var(--text-primary));
+  }
 
-	.projects-section, .skills-section, .contact-section {
-		background-color: #f4f4f5;
-		width: 100vw;
-		margin-left: calc(50% - 50vw); 
-	}
+  p {
+    color: hsl(var(--text-secondary));
+  }
 
-	.hero {
-		height: 100vh;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background-color: hsl(var(--background));
-	}
+  .projects-section,
+  .skills-section,
+  .contact-section {
+    background-color: #f4f4f5;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
 
-	.dark {
-		--background: 220 13% 18%;
-		--text-primary: 0 0% 100%;
-		--text-secondary: 0 0% 70%;
-		--accent: 136, 58, 234; 
-		--accent-light: 48, 48, 48;
-		--accent-dark: 200, 200, 200;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent-dark)), rgb(var(--accent-light)) 30%, hsl(220, 13%, 18%) 60%);
-	}
+  .hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(var(--background));
+  }
 
-	.dark html {
-		background: hsl(var(--background));
-	}
+  .dark {
+    --background: 220 13% 18%;
+    --text-primary: 0 0% 100%;
+    --text-secondary: 0 0% 70%;
+    --accent: 136, 58, 234;
+    --accent-light: 48, 48, 48;
+    --accent-dark: 200, 200, 200;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent-dark)),
+      rgb(var(--accent-light)) 30%,
+      hsl(220, 13%, 18%) 60%
+    );
+  }
 
-	.dark header {
-		background-color: #3d3d43;
-	}
+  .dark html {
+    background: hsl(var(--background));
+  }
 
-	.dark .projects-section, 
-	.dark .contact-section {
-		background-color: #3d3d43;
-		color: white;
-	}
+/*   .dark header {
+    background-color: #3d3d43;
+  } */
 
-	.dark .skills-section .skills {
-		background-color: black;
-	}
+  .dark .projects-section,
+  .dark .contact-section {
+    background-color: #3d3d43;
+    color: white;
+  }
 
-	.dark .hero {
-		background-color: black
-	}
+  .dark .skills-section .skills {
+    background-color: black;
+  }
 
-	.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-		color: hsl(var(--text-primary));
-	}
+  .dark .hero {
+    background-color: black;
+  }
 
-	.dark p {
-		color: hsl(var(--text-secondary));
-	}
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6 {
+    color: hsl(var(--text-primary));
+  }
 
-	.dark a {
-		color: hsl(var(--text-primary));
-	}
+  .dark p {
+    color: hsl(var(--text-secondary));
+  }
 
-	.dark button {
-		background-color: #555;
-		color: hsl(var(--text-primary));
-	}
+  .dark a {
+    color: hsl(var(--text-primary));
+  }
 
-	.dark button:hover {
-		background-color: #777;
-	}
+  .dark button {
+    color: hsl(var(--text-primary));
+  }
 
-	.dark .project-text h4,
-	.dark .project-text p,
-	.dark .skill-item span,
-	.dark .skill-item p {
-		color: hsl(var(--text-primary));
-	}
+  .dark button:hover {
+    background-color: #777;
+  }
 
+  .dark .project-text h4,
+  .dark .project-text p,
+  .dark .skill-item span,
+  .dark .skill-item p {
+    color: hsl(var(--text-primary));
+  }
 
-	.dark .view-portfolio-button {
-		background-color: hsl(var(--text-primary));
-		color: hsl(var(--background));
-	}
+  .dark .view-portfolio-button {
+    background-color: hsl(var(--text-primary));
+    color: hsl(var(--background));
+  }
 
-	.dark .view-portfolio-button:hover {
-		background-color: hsl(var(--text-secondary));
-	}
+  .dark .view-portfolio-button:hover {
+    background-color: hsl(var(--text-secondary));
+  }
 
-	.dark .skill-item {
-		background-color: #2d2d30;
-	}
+  .dark .skill-item {
+    background-color: #2d2d30;
+  }
 
-	.dark footer span {
-		color: white;
-	}
+  .dark footer span {
+    color: white;
+  }
 
-	.dark .skills-tag{
-		color: black;
-	}
+  .dark .skills-tag {
+    color: black;
+  }
 
-	.dark #mobile-nav-menu {
-		background-color: #3d3d43;
-		color: black;
-	}
+  .dark #mobile-nav-menu {
+    background-color: #949699;
+    color: black;
+  }
+
+  .dark .contributions-section {
+    background-color: #3d3d43;
+    color: hsl(var(--text-primary));
+  }
+
+  .dark .contributions-content h2,
+  .dark .contributions-content h3 {
+    color: hsl(var(--text-primary));
+  }
+
+  .dark .contribution-text h4,
+  .dark .contribution-text p {
+    color: hsl(var(--text-primary));
+  }
+
+  .dark .view-portfolio-button {
+    background-color: hsl(var(--text-primary));
+    color: hsl(var(--background));
+  }
+
+  .dark .view-portfolio-button:hover {
+    background-color: hsl(var(--text-secondary));
+  }
 </style>
