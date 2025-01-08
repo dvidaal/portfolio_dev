@@ -1,27 +1,96 @@
 <section class="hero bg-white text-black flex justify-center">
   <div class="hero-content flex flex-col md:flex-row items-center justify-between w-full max-w-screen-xl px-8">
- 
-    <div class="text-content text-left md:mr-16 md:w-2/3"> 
-   <h1 class="text-5xl md:text-8xl font-bold mb-6 text-left w-full max-w-3xl">
-     Creating Seamless Digital Journeys
-   </h1>
-   <p class="text-lg md:text-xl mb-8 text-gray-500">
-     Hello, I'm Diana Vidal, an enthusiastic fullstack developer from Barcelona. My goal is to build websites and applications that are both aesthetically pleasing and incredibly user-friendly.
-   </p>
-</div>
+    <div class="text-content text-left md:mr-16 md:w-2/3">
+      <h1 id="line-1" class="text-5xl md:text-8xl font-bold mb-2 text-left w-full max-w-3xl">
+        <span id="line-1-text"></span><span id="line-1-cursor" class="cursor">|</span>
+      </h1>
+      <h1 id="line-2" class="text-5xl md:text-8xl font-bold mb-6 text-left w-full max-w-3xl">
+        <span id="line-2-text"></span><span id="line-2-cursor" class="cursor">|</span>
+      </h1>
+      <p class="text-lg md:text-xl mb-8 text-gray-500">
+        Hello, I'm Diana Vidal, an enthusiastic fullstack developer from Barcelona. My goal is to build websites and applications that are both aesthetically pleasing and incredibly user-friendly.
+      </p>
+    </div>
 
     <div class="md:w-1/3 flex justify-center md:justify-end">
-  <img src="diana.png" alt="Foto Diana" class="w-[230px] h-[230px] md:w-[300px] md:h-[300px] rounded-full object-cover mb-4">
-</div>
-
+      <img src="diana.png" alt="Foto Diana" class="w-[230px] h-[230px] md:w-[300px] md:h-[300px] rounded-full object-cover mb-4">
+    </div>
   </div>
 </section>
 
+<script>
+  const lines = ["Creating Seamless", "Digital Journeys"];
+  let lineIndex = 0;
+  let position = 0;
 
+  const writeLine = (lineId: string, text: string, cursorId: string, callback?: () => void) => {
+    const textElement = document.getElementById(`${lineId}-text`);
+    const cursorElement = document.getElementById(cursorId);
+    const interval = setInterval(() => {
+      if (textElement) {
+        textElement.textContent = text.slice(0, position + 1); 
+      }
+      position++;
+
+      if (textElement) {
+        if (cursorElement) {
+          textElement.appendChild(cursorElement);
+        }
+      }
+
+      if (position >= text.length) {
+        clearInterval(interval);
+        if (callback) {
+          setTimeout(callback, 500);
+        } else {
+          if (cursorElement) {
+            cursorElement.style.display = "none";
+          }
+        }
+      }
+    }, 100);
+  };
+
+  const startTyping = () => {
+    const line1Cursor = document.getElementById("line-1-cursor");
+    const line2Cursor = document.getElementById("line-2-cursor");
+
+    if (line1Cursor) {
+      line1Cursor.style.display = "inline";
+    }
+    writeLine("line-1", lines[0], "line-1-cursor", () => {
+      position = 0;
+      if (line1Cursor) {
+        line1Cursor.style.display = "none";
+      }
+      if (line2Cursor) {
+        line2Cursor.style.display = "inline"; 
+      }
+      writeLine("line-2", lines[1], "line-2-cursor");
+    });
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const line2Cursor = document.getElementById("line-2-cursor");
+    if (line2Cursor) {
+      line2Cursor.style.display = "none"; 
+    }
+    startTyping();
+  });
+</script>
 
 <style>
-  .text-content Button {
-    margin-top: 1rem;
-  }
+.cursor {
+  display: inline-block;
+  font-size: inherit;
+  color: black;
+  margin-left: 2px;
+  animation: blink 0.5s step-end infinite;
+}
 
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
 </style>
